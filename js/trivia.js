@@ -8,6 +8,13 @@ function preguntarUsuario(pregunta, respuestaCorrecta) {
     }
 }
 
+class Pregunta {
+    constructor(texto, respuestaCorrecta) {
+        this.texto = texto;
+        this.respuestaCorrecta = respuestaCorrecta.toLowerCase();
+    }
+}
+
 const terminos = confirm("Antes de iniciar con la trivia, ¿Acepta los términos y condiciones?");
 
 if (!terminos) {
@@ -15,20 +22,13 @@ if (!terminos) {
 } else {
 
     const preguntas = [
-        "¿Cuál es la capital de Argentina?",
-        "¿Cuál es el nombre completo del presidente actual de Argentina?",
-        "¿Cuantos paises limitan con Argentina?",
-        "¿Cuántas provincias tiene Argentina?"
+        new Pregunta("¿Cuál es la capital de Argentina?", "ciudad autonoma de buenos aires"),
+        new Pregunta("¿Cuál es el nombre completo del presidente actual de Argentina?", "javier gerardo milei"),
+        new Pregunta("¿Cuántos países limitan con Argentina?", "5"),
+        new Pregunta("¿Cuántas provincias tiene Argentina?", "23")
     ];
 
-    const respuestasCorrectas = [
-        "ciudad autonoma de buenos aires",
-        "javier gerardo milei",
-        "5",
-        "23"
-    ];
-
-    for (let i = 0; i < preguntas.length; i++)  {
-        preguntarUsuario(preguntas[i], respuestasCorrectas[i]);
+    for (let i = 0; i < preguntas.length; i++) {
+        preguntarUsuario(preguntas[i].texto, preguntas[i].respuestaCorrecta);
     }
 }
